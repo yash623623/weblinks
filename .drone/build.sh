@@ -13,7 +13,7 @@ cp jorobo.dist.ini jorobo.ini
 cp RoboFile.dist.ini RoboFile.ini
 
 # Create the apache root directory then configure the RoboFile to use it for the Joomla Site
-mkdir -p /tests/www
+mkdir -p /tests/www/tests/joomla
 chown -R www-data /tests
 sed -i -r 's!^(cmsPath\s*=\s*)(.*)!\1\/tests\/www\/\2!' RoboFile.ini
 
