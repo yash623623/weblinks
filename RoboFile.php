@@ -435,10 +435,6 @@ class RoboFile extends Tasks
 					$this->configuration->cmsPath
 				)
 			);
-			var_dump(sprintf('Path %s is unreadable', $this->configuration->cmsPath));
-			var_dump(dirname($this->configuration->cmsPath));
-			var_dump(file_exists(dirname($this->configuration->cmsPath)));
-			die;
 
 			return 'tests/joomla';
 		}
