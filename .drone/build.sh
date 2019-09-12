@@ -14,6 +14,7 @@ cp RoboFile.dist.ini RoboFile.ini
 
 # Make sure the path to the CMS is inside the apache config for docker
 sed -i -r 's!^(cmsPath\s*=\s*)(.*)!\1\/tests\/www\/\2!' RoboFile.ini
+cat RoboFile.ini
 
 # Build package
 vendor/bin/robo build --dev
