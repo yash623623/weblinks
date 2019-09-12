@@ -14,11 +14,6 @@ mount
 # Install dependencies
 composer install --no-interaction --no-progress
 
-mkdir -p /tests/www
-cp -r ./* /tests/www
-
-cd /tests/www
-
 cp jorobo.dist.ini jorobo.ini
 cp RoboFile.dist.ini RoboFile.ini
 
@@ -27,6 +22,3 @@ vendor/bin/robo build --dev
 
 # Copy acceptance yml
 cp tests/acceptance.suite.dist.yml tests/acceptance.suite.yml
-
-chown -R www-data .
-chown -R www-data /tests
