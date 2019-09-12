@@ -113,10 +113,12 @@ class RoboFile extends Tasks
 
 		$this->runSelenium();
 
-		// Make sure to run the build command to generate AcceptanceTester
-		$this->_exec($this->isWindows() ? 'vendor\bin\codecept.bat build' : 'php vendor/bin/codecept build');
+		$codeceptionLocation = $this->isWindows() ? 'vendor\bin\codecept.bat' : 'php vendor/bin/codecept';
 
-		$this->taskCodecept()
+		// Make sure to run the build command to generate AcceptanceTester
+		$this->_exec($codeceptionLocation . ' build');
+
+		$this->taskCodecept($codeceptionLocation)
 			->arg('--steps')
 			->arg('--debug')
 			->arg('--fail-fast')
@@ -125,7 +127,7 @@ class RoboFile extends Tasks
 			->run()
 			->stopOnFail();
 
-		$this->taskCodecept()
+		$this->taskCodecept($codeceptionLocation)
 			->arg('--steps')
 			->arg('--debug')
 			->arg('--fail-fast')
@@ -134,7 +136,7 @@ class RoboFile extends Tasks
 			->run()
 			->stopOnFail();
 
-		$this->taskCodecept()
+		$this->taskCodecept($codeceptionLocation)
 			->arg('--steps')
 			->arg('--debug')
 			->arg('--fail-fast')
@@ -560,9 +562,10 @@ class RoboFile extends Tasks
 		$this->taskComposerInstall()->run();
 
 		// Make sure to run the build command to generate AcceptanceTester
-		$this->_exec($this->isWindows() ? 'vendor\bin\codecept.bat build' : 'php vendor/bin/codecept build');
+		$codeceptionLocation = $this->isWindows() ? 'vendor\bin\codecept.bat' : 'php vendor/bin/codecept';
+		$this->_exec($codeceptionLocation . ' build');
 
-		$this->taskCodecept()
+		$this->taskCodecept($codeceptionLocation)
 			->suite('unit')
 			->run()
 			->stopOnFail();
