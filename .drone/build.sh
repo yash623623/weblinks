@@ -12,9 +12,10 @@ composer install --no-interaction --no-progress
 cp jorobo.dist.ini jorobo.ini
 cp RoboFile.dist.ini RoboFile.ini
 
-# Make sure the path to the CMS is inside the apache config for docker
+# Create the apache root directory then configure the RoboFile to use it for the Joomla Site
+mkdir -p /tests/www
+chown -R www-data /tests
 sed -i -r 's!^(cmsPath\s*=\s*)(.*)!\1\/tests\/www\/\2!' RoboFile.ini
-cat RoboFile.ini
 
 # Build package
 vendor/bin/robo build --dev
