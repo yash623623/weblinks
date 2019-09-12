@@ -429,8 +429,16 @@ class RoboFile extends Tasks
 
 		if (!file_exists(dirname($this->configuration->cmsPath)))
 		{
-			$this->say("Cms path written in local configuration does not exists or is not readable");
-			var_dump(sprintf('Path %s is unreadable', $this->configuration->cmsPath));die;
+			$this->say(
+				sprintf(
+					"Cms path %s written in local configuration does not exists or is not readable",
+					$this->configuration->cmsPath
+				)
+			);
+			var_dump(sprintf('Path %s is unreadable', $this->configuration->cmsPath));
+			var_dump(dirname($this->configuration->cmsPath));
+			var_dump(file_exists(dirname($this->configuration->cmsPath)));
+			die;
 
 			return 'tests/joomla';
 		}
