@@ -9,6 +9,9 @@ composer self-update
 # Install dependencies
 composer install --no-interaction --no-progress
 
+google-chrome --version
+chmod 755 vendor/joomla-projects/selenium-server-standalone/bin/webdrivers/chrome/linux/chromedriver
+
 cp jorobo.dist.ini jorobo.ini
 cp RoboFile.dist.ini RoboFile.ini
 
